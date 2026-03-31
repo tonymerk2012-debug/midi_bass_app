@@ -37,11 +37,7 @@ def analyze_chords(midi_file):
     return unique_chords
 
 def generate_bass(chords, style="rock", complexity=4):
-    """
-    Генерирует басовую партию
-    style: "simple", "rock", "funk"
-    complexity: количество нот на аккорд (2-8)
-    """
+    """Генерирует басовую партию"""
     bass_notes = []
     
     for chord in chords:
@@ -94,7 +90,7 @@ def create_bass_midi(bass_notes, tempo=120, output_path="bass_output.mid"):
     return output_path
 
 def process_midi(input_file, style="rock", complexity=4, tempo=120):
-    """Основная функция обработки"""
+    """Основная функция обработки с возвратом данных для визуализации"""
     chords = analyze_chords(input_file)
     if not chords:
         return None, "Не удалось найти аккорды в файле"
@@ -103,4 +99,5 @@ def process_midi(input_file, style="rock", complexity=4, tempo=120):
     output_file = "bass_output.mid"
     create_bass_midi(bass_notes, tempo, output_file)
     
-    return output_file, f"Успешно! Найдено {len(chords)} аккордов, сгенерировано {len(bass_notes)} нот баса"
+    # Возвращаем также данные об аккордах для визуализации
+    return output_file, f"Успешно! Найдено {len(chords)} аккордов, сгенерировано {len(bass_notes)} нот баса", chords
