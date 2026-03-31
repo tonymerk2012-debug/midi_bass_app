@@ -1,3 +1,4 @@
 streamlit
 pretty_midi
 numpy
+matplotlib
